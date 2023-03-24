@@ -2,14 +2,44 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import style from '@/styles/login.module.scss'
 import { useRouter } from "next/router"
-
+import axios from 'axios'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const router = useRouter()
   const loginBtnEvent = () => {
-    // Login API 처리 이후에 성공했으면 localStroate에 AccessToken 넘기고 /cms로 이동
-    router.push('/cms')
+    const inputId = document.getElementById('inputId')
+    const inputPassword = document.getElementById('inputPassword')
+
+    if(inputId.value === '') {
+      alert('아이디를 입력해 주세요')
+    } else if(inputPassword.value === '') {
+      alert('패스워드를 입력해 주세요.')
+    } else {
+      
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}api/user/login`, {
+          email:inputId.value,
+          password:inputPassword.value
+        }).then((response) => {
+          localStorage.setItem('accessToken', response.data.access_token)
+          router.push('/cms')
+        }).catch((error) => {
+          if(error.response.status === 404) {
+            alert('아이디나 비밀번호를 확인해 주세요.')
+          } else {
+            alert('오류가 발생하였습니다. 관리자에게 문의해 주세요.')
+          }
+        })
+
+      
+    }
+    
+  }
+
+  const loginKeyEvent = (e) => {
+    if(e.keyCode === 13) {
+      loginBtnEvent()
+    }
   }
 
   return (
@@ -24,10 +54,10 @@ export default function Home() {
         <div className={style.loginPageWrap}>
           <div className={style.loginWrap}>
             <div className={style.loginItem}>
-              <input type="email" placeholder='input your id' className='form-control'></input>
+              <input type="email" placeholder='input your id' className='form-control' id="inputId" onKeyUp={loginKeyEvent}></input>
             </div>
             <div className={style.loginItem}>
-              <input type="password" placeholder='input your password.' className='form-control'></input>
+              <input type="password" placeholder='input your password.' className='form-control' onKeyUp={loginKeyEvent} id='inputPassword'></input>
             </div>
             <div>
               <button className='btn btn-primary' onClick={loginBtnEvent}>로그인</button>

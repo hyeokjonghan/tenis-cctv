@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
+* {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    &:hover {
+        color: #000;
+    }
+}
+
+.table {
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+}
