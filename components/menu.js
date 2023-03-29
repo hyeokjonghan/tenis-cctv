@@ -17,18 +17,18 @@ export default function MenuList() {
             ]
         },
         {
-            name:"CCTV 관리",
+            name:"예약 내역",
             icon:'',
             key:2,
             menu: [
                 {
-                    name:"CCTV List",
-                    path:"/cms/cctv",
+                    name:"예약 내역 관리",
+                    path:"/cms/reservation",
                     icon:""
                 },
                 {
-                    name:"요청 영상 리스트",
-                    path:"/cms/cctv/video",
+                    name:"예약 내역 등록",
+                    path:"/cms/reservation/append",
                     icon:""
                 }
             ]

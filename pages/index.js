@@ -24,11 +24,16 @@ export default function Home() {
           localStorage.setItem('accessToken', response.data.access_token)
           router.push('/cms')
         }).catch((error) => {
-          if(error.response.status === 404) {
-            alert('아이디나 비밀번호를 확인해 주세요.')
-          } else {
+          if(!error.response) {
             alert('오류가 발생하였습니다. 관리자에게 문의해 주세요.')
+          } else {
+            if(error.response.status === 404) {
+              alert('아이디나 비밀번호를 확인해 주세요.')
+            } else {
+              alert('오류가 발생하였습니다. 관리자에게 문의해 주세요.')
+            }
           }
+          
         })
 
       

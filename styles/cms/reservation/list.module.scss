@@ -1,0 +1,22 @@
+.listWrap {
+    @include bg-vc-border-gradient;
+    padding: 1px;
+}
+
+.searchWrap {
+    @include bg-vc-border-gradient;
+    margin-bottom: 20px;
+    padding: 1px;
+    table {
+        td {
+            padding: 5px 10px;
+        }
+    }
+}
+
+.pagerWrap {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
