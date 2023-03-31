@@ -1,6 +1,12 @@
 .listWrap {
     @include bg-vc-border-gradient;
     padding: 1px;
+    .tableBtnWrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+    }
 }
 
 .searchWrap {

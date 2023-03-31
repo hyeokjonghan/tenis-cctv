@@ -3,7 +3,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import '@/styles/common.scss'
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect } from 'react';
-export default function App({ Component, pageProps }) {
+import {wrapper} from '../store'
+
+function App({ Component, pageProps }) {
   useEffect(() => {
     typeof document !== undefined
       ? require("bootstrap/dist/js/bootstrap")
@@ -11,3 +13,5 @@ export default function App({ Component, pageProps }) {
     },[]);
   return <Component {...pageProps} />
 }
+
+export default wrapper.withRedux(App)

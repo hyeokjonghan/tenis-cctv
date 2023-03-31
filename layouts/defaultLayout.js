@@ -7,7 +7,6 @@ import axiosInstance from "@/lib/axiosInstance";
 export default function DefaultLayout({children}) {
     const router = useRouter()
     useEffect(() => {
-        console.log('check')
         axiosInstance.post('api/health').catch((error) => {
             alert('로그인을 먼저 진행해 주세요.')
             router.push('/')
